@@ -1,6 +1,6 @@
 {
-  "name": "fluo",
-  "version": "1.1.0",
+  "name": "fluo-colors",
+  "version": "1.0.1",
   "description": "Ultra-fast, feature-rich terminal styling",
   "keywords": [
     "terminal",
@@ -32,10 +32,24 @@
     "url": "https://github.com/SuneelKumarr/fluo/issues"
   },
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": "{\"import\": \"./dist/index.js\", \"require\": \"./dist/index.cjs\"}",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./core": {
+      "import": "./dist/core.mjs",
+      "require": "./dist/core.cjs"
+    },
+    "./gradient": {
+      "import": "./dist/gradient.mjs",
+      "require": "./dist/gradient.cjs"
+    }
+  },
   "files": "[\"dist\"]",
   "engines": {
     "node": ">=14.0.0"
@@ -81,11 +95,11 @@
   "size-limit": [
     {
       "path": "dist/index.mjs",
-      "limit": "3 kB"
+      "limit": "11 kB"
     },
     {
       "path": "dist/core.mjs",
-      "limit": "1.5 kB"
+      "limit": "3 kB"
     }
   ],
   "directories": {

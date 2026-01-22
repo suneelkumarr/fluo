@@ -1,12 +1,12 @@
-# 🌈 Fluo: The Fastest Terminal Styling Library for Node.js
+# 🌈 Fluo Colors: The Fastest Terminal Styling Library for Node.js
 
-[![npm version](https://img.shields.io/npm/v/fluo.svg)](https://www.npmjs.com/package/fluo)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/fluo)](https://bundlephobia.com/package/fluo)
-[![downloads](https://img.shields.io/npm/dm/fluo)](https://www.npmjs.com/package/fluo)
-[![license](https://img.shields.io/npm/l/fluo)](https://github.com/yourusername/fluo/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/fluo-colors.svg)](https://www.npmjs.com/package/fluo-colors)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/fluo-colors)](https://bundlephobia.com/package/fluo-colors)
+[![downloads](https://img.shields.io/npm/dm/fluo-colors)](https://www.npmjs.com/package/fluo-colors)
+[![license](https://img.shields.io/npm/l/fluo-colors)](https://github.com/yourusername/fluo/blob/main/LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)](https://www.typescriptlang.org/)
 
-**Fluo** is an ultra-fast, zero-dependency library for styling terminal output in Node.js, Deno, and Bun. It offers a complete suite of CLI UI tools including **16 million colors (TrueColor)**, **gradients**, **spinners**, **progress bars**, and **box drawing**.
+**Fluo Colors** is an ultra-fast, zero-dependency library for styling terminal output in Node.js, Deno, and Bun. It offers a complete suite of CLI UI tools including **16 million colors (TrueColor)**, **gradients**, **spinners**, **progress bars**, and **box drawing**.
 
 Engineered for performance, Fluo is significantly **faster than Chalk**, smaller than picocolors, and more feature-rich than both. It is the ultimate modern alternative for building beautiful command-line interfaces.
 
@@ -44,13 +44,14 @@ Fluo is optimized for raw speed. It uses pre-computed ANSI codes and efficient s
 
 | Package | Size (Min+Gzip) | Load Time | Operations/sec | Dependencies |
 |---------|-----------------|-----------|----------------|--------------|
-| **fluo (direct)** | **~4 kB** | **~0.3ms** | **~132,000,000** | **0** |
-| chalk | 101 kB | 6.17ms | ~370,000,000 | 0 |
-| picocolors | 7 kB | 0.47ms | ~57,000,000 | 0 |
-| colorette | 17 kB | 2.48ms | ~57,000,000 | 0 |
-| kleur | 21 kB | 2.01ms | ~380,000,000 | 0 |
+| **fluo-colors (core)** | **~2.7 kB** | **~0.3ms** | **~132,000,000** | **0** |
+| **fluo-colors (full)** | **~10.5 kB** | **~1ms** | **~132,000,000** | **0** |
+| chalk | 4.4 kB | 6.17ms | ~370,000,000 | 0 |
+| picocolors | 0.7 kB | 0.47ms | ~57,000,000 | 0 |
+| colorette | 1.6 kB | 2.48ms | ~57,000,000 | 0 |
+| kleur | 2.4 kB | 2.01ms | ~380,000,000 | 0 |
 
-> **Note:** "Direct" usage refers to importing functions directly (e.g., `import { red } from 'fluo'`). The chainable API (`fluo.red()`) prioritizes developer experience and features over raw micro-benchmarks, while still remaining performant enough for any real-world application.
+> **Note:** For the smallest bundle size, you can import from `fluo-colors/core` if you only need basic colors and styles. The full package includes gradients, themes, boxes, and animations.
 
 ---
 
@@ -60,16 +61,16 @@ Install Fluo using your favorite package manager:
 
 ```bash
 # npm
-npm install fluo
+npm install fluo-colors
 
 # yarn
-yarn add fluo
+yarn add fluo-colors
 
 # pnpm
-pnpm add fluo
+pnpm add fluo-colors
 
 # bun
-bun add fluo
+bun add fluo-colors
 ```
 
 ---
@@ -97,7 +98,7 @@ Fluo isn't just about colors; it's a complete toolkit for building professional 
 Import `fluo` to start styling your console output immediately. Chain methods for complex styles.
 
 ```typescript
-import fluo, { b } from 'fluo';
+import fluo, { b } from 'fluo-colors';
 
 // Standard colors
 console.log(fluo.red('Error: Something went wrong'));
@@ -141,7 +142,7 @@ console.log(fluo.ansi256(208)('Classic Orange'));
 Create stunning gradient text effects for headers, banners, and emphasized text.
 
 ```typescript
-import { rainbow, gradient, sunset, neon } from 'fluo';
+import { rainbow, gradient, sunset, neon } from 'fluo-colors';
 
 // Built-in Presets
 console.log(rainbow('Unicorn magic!'));
@@ -164,7 +165,7 @@ Build rich CLI dashboards with built-in components.
 Wrap text in beautiful, customizable borders.
 
 ```typescript
-import { box } from 'fluo';
+import { box } from 'fluo-colors';
 
 console.log(box('Installation Complete', {
   padding: 1,
@@ -181,7 +182,7 @@ console.log(box('Installation Complete', {
 Show activity for long-running processes.
 
 ```typescript
-import { createSpinner } from 'fluo';
+import { createSpinner } from 'fluo-colors';
 
 const spinner = createSpinner({
   text: 'Downloading packages...',
@@ -198,7 +199,7 @@ setTimeout(() => {
 Track file uploads, installations, or processing tasks.
 
 ```typescript
-import { createProgressBar } from 'fluo';
+import { createProgressBar } from 'fluo-colors';
 
 const bar = createProgressBar({ 
   total: 100,
@@ -218,7 +219,7 @@ const timer = setInterval(() => {
 Fluo includes additional text effects for dynamic interfaces.
 
 ```typescript
-import { typewriter, countdown, blink, scrollText } from 'fluo';
+import { typewriter, countdown, blink, scrollText } from 'fluo-colors';
 
 // Typewriter effect
 await typewriter('Welcome to the future of CLI...', { delay: 50 });
@@ -239,7 +240,7 @@ const scroller = scrollText('Breaking News: Fluo is awesome! ', 20).start();
 Manage consistent styling across your application with the powerful Theme API. Compatible with popular color schemes like Dracula and Monokai.
 
 ```typescript
-import { themes, createTheme } from 'fluo';
+import { themes, createTheme } from 'fluo-colors';
 
 // Use a built-in theme
 // Presets: default, dracula, monokai, nord, solarized, github
@@ -265,7 +266,7 @@ const myTheme = createTheme({
 Helper functions for string manipulation in terminal environments.
 
 ```typescript
-import { stripAnsi, visibleLength, hexToRgb } from 'fluo';
+import { stripAnsi, visibleLength, hexToRgb } from 'fluo-colors';
 
 // Remove ANSI codes (useful for logging to files)
 const clean = stripAnsi('\x1b[31mRed\x1b[0m'); // "Red"
@@ -286,7 +287,7 @@ Fluo automatically detects the capabilities of the running terminal (No Color, B
 You can override this behavior using environment variables or the API:
 
 ```typescript
-import { detectColorLevel, setColorLevel } from 'fluo';
+import { detectColorLevel, setColorLevel } from 'fluo-colors';
 
 console.log('Current Support Level:', detectColorLevel());
 // 0: No Color
