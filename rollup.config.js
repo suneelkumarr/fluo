@@ -38,6 +38,7 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: false,
+        declarationMap: false,
       }),
       isProduction && terser(terserConfig),
     ].filter(Boolean),
@@ -56,6 +57,7 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: false,
+        declarationMap: false,
       }),
       isProduction && terser(terserConfig),
     ].filter(Boolean),
@@ -69,7 +71,11 @@ export default [
       { file: 'dist/core.cjs', format: 'cjs' },
     ],
     plugins: [
-      typescript({ tsconfig: './tsconfig.json', declaration: false }),
+      typescript({ 
+        tsconfig: './tsconfig.json', 
+        declaration: false,
+        declarationMap: false, 
+      }),
       isProduction && terser(terserConfig),
     ].filter(Boolean),
   },
@@ -82,7 +88,11 @@ export default [
       { file: 'dist/gradient.cjs', format: 'cjs' },
     ],
     plugins: [
-      typescript({ tsconfig: './tsconfig.json', declaration: false }),
+      typescript({ 
+        tsconfig: './tsconfig.json', 
+        declaration: false,
+        declarationMap: false,
+      }),
       isProduction && terser(terserConfig),
     ].filter(Boolean),
   },

@@ -6,7 +6,7 @@
 import { ESC, CLOSE_FG, CLOSE_BG } from '../core/ansi';
 import { detectColorLevel } from '../core/detect';
 import { hexToRgb, rgbToAnsi256 } from '../core/colors';
-import type { RgbColor, Theme } from '../types';
+import type { Theme } from '../types';
 
 /**
  * Extended theme with all style options
@@ -372,7 +372,7 @@ export const getStyles = (): ThemeStyles => activeStyles;
  * Create a scoped theme (doesn't affect global)
  */
 export const createTheme = (theme: Partial<ExtendedTheme>): ThemeStyles => {
-  const merged: ExtendedTheme = { ...themes.default, ...theme };
+  const merged = { ...themes.default, ...theme } as ExtendedTheme;
   return createThemeStyles(merged);
 };
 
@@ -398,7 +398,7 @@ export const theme = {
  * Extend current theme with overrides
  */
 export const extendTheme = (overrides: Partial<ExtendedTheme>): void => {
-  currentTheme = { ...currentTheme, ...overrides };
+  currentTheme = { ...currentTheme, ...overrides } as ExtendedTheme;
   activeStyles = createThemeStyles(currentTheme);
 };
 

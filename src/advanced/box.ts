@@ -4,7 +4,7 @@
  */
 
 import { fluo } from '../core/factory';
-import type { BoxOptions } from '../types';
+import type { BoxOptions, BoxBorderStyle } from '../types';
 
 // Box drawing characters
 const BORDERS = {
@@ -63,6 +63,14 @@ const BORDERS = {
     bottomRight: '+',
     horizontal: '-',
     vertical: '|',
+  },
+  arrow: {
+    topLeft: '↘',
+    topRight: '↙',
+    bottomLeft: '↗',
+    bottomRight: '↖',
+    horizontal: '─',
+    vertical: '│',
   },
   none: {
     topLeft: ' ',
@@ -140,7 +148,8 @@ export const box = (content: string, options: BoxOptions = {}): string => {
   
   const padding = normalizePadding(options.padding);
   const margin = normalizePadding(options.margin);
-  const border = BORDERS[borderStyle];
+  // @ts-ignore
+  const border = BORDERS[borderStyle] || BORDERS.single;
   
   // Split content into lines
   const lines = content.split('\n');
@@ -252,5 +261,5 @@ export const box = (content: string, options: BoxOptions = {}): string => {
  * Create a simple frame around text
  */
 export const frame = (text: string, style: keyof typeof BORDERS = 'single'): string => {
-  return box(text, { borderStyle: style });
+  return box(text, { borderStyle: style as BoxBorderStyle });
 };

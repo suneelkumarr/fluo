@@ -4,7 +4,6 @@
  */
 
 import { OSC, BEL, ESC } from '../core/ansi';
-import { detectColorLevel } from '../core/detect';
 
 /**
  * Hyperlink options

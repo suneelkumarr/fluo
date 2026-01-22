@@ -192,7 +192,6 @@ export const wrapLines = (str: string, options: WrapOptions = {}): WrapResult =>
       
       // Find break point
       let breakPoint = effectiveWidth;
-      const stripped = stripAnsi(remaining);
       
       if (!hard && !cut) {
         // Find last word break character before width

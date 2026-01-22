@@ -4,26 +4,25 @@
  */
 
 import { ESC } from '../core/ansi';
-import { detectColorLevel } from '../core/detect';
 
 /**
  * Cursor control sequences
  */
 const cursor = {
-  hide: '\x1b[?25l',
-  show: '\x1b[?25h',
-  up: (n: number = 1) => `\x1b[${n}A`,
-  down: (n: number = 1) => `\x1b[${n}B`,
-  forward: (n: number = 1) => `\x1b[${n}C`,
-  backward: (n: number = 1) => `\x1b[${n}D`,
-  column: (n: number = 1) => `\x1b[${n}G`,
-  home: '\x1b[H',
-  clearLine: '\x1b[2K',
-  clearScreen: '\x1b[2J',
-  saveCursor: '\x1b7',
-  restoreCursor: '\x1b8',
-  scrollUp: '\x1b[S',
-  scrollDown: '\x1b[T',
+  hide: `${ESC}[?25l`,
+  show: `${ESC}[?25h`,
+  up: (n: number = 1) => `${ESC}[${n}A`,
+  down: (n: number = 1) => `${ESC}[${n}B`,
+  forward: (n: number = 1) => `${ESC}[${n}C`,
+  backward: (n: number = 1) => `${ESC}[${n}D`,
+  column: (n: number = 1) => `${ESC}[${n}G`,
+  home: `${ESC}[H`,
+  clearLine: `${ESC}[2K`,
+  clearScreen: `${ESC}[2J`,
+  saveCursor: `${ESC}7`,
+  restoreCursor: `${ESC}8`,
+  scrollUp: `${ESC}[S`,
+  scrollDown: `${ESC}[T`,
 };
 
 export { cursor };
@@ -742,7 +741,6 @@ export const animate = (
   
   let frameIndex = 0;
   let running = false;
-  let resolvePromise: (() => void) | null = null;
   
   return {
     async start() {
@@ -750,8 +748,6 @@ export const animate = (
       stream.write(cursor.hide);
       
       return new Promise<void>((resolve) => {
-        resolvePromise = resolve;
-        
         const tick = () => {
           if (!running) {
             stream.write(cursor.show);

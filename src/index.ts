@@ -26,9 +26,8 @@
  * ```
  */
 
-import { STYLES, OPEN, CLOSE, ESC, CLOSE_FG, CLOSE_BG, hyperlink as createHyperlink } from './core/ansi';
-import { detectColorLevel, setColorLevel, resetColorLevel, supportsColor } from './core/detect';
-import { hexToRgb, hslToRgb, rgbToAnsi256 } from './core/colors';
+import { OPEN, CLOSE, hyperlink as createHyperlink } from './core/ansi';
+import { hexToRgb, hslToRgb } from './core/colors';
 import { applyStyle, applyRgb, applyAnsi256, fluo, options } from './core/factory';
 
 // Main export

@@ -3,13 +3,13 @@
  * High-performance style management and composition
  */
 
-import { STYLES, OPEN, CLOSE, ESC, CLOSE_FG, CLOSE_BG } from './ansi';
+import { OPEN, CLOSE, ESC, CLOSE_FG, CLOSE_BG } from './ansi';
 import { detectColorLevel } from './detect';
-import { hexToRgb, hslToRgb, rgbToAnsi256 } from './colors';
-import type { StyleName, ColorLevel, RgbColor } from '../types';
+import { rgbToAnsi256, hexToRgb, hslToRgb } from './colors';
+import type { StyleName } from '../types';
 
 /**
- * Style definition with open/close codes
+ * Basic style function (open/close codes)
  */
 export interface StyleDef {
   open: string;

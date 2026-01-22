@@ -24,7 +24,6 @@ export const gradient = (
   
   const {
     interpolation = 'rgb',
-    direction = 'horizontal',
   } = options;
   
   // Parse colors

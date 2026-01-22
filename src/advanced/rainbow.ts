@@ -3,7 +3,7 @@
  * Create stunning rainbow and multi-color text effects
  */
 
-import { ESC, CLOSE_FG, CLOSE_BG } from '../core/ansi';
+import { ESC, CLOSE_FG } from '../core/ansi';
 import { detectColorLevel } from '../core/detect';
 import { hslToRgb, hexToRgb, rgbToHsl } from '../core/colors';
 import type { RgbColor } from '../types';
@@ -84,10 +84,10 @@ export const neon = (text: string, color: string | RgbColor = '#00FF00'): string
   if (level < 3) return text;
   
   const rgb = typeof color === 'string' ? hexToRgb(color) : color;
-  const [h, s, l] = rgbToHsl(...rgb);
+  const [h, s] = rgbToHsl(...rgb);
   
   // Create bright version
-  const brightRgb = hslToRgb(h, Math.min(100, s + 20), Math.min(100, l + 30));
+  const brightRgb = hslToRgb(h, Math.min(100, s + 20), 80);
   
   const chars = [...text];
   let result = '';
@@ -427,7 +427,6 @@ const applyColorSequence = (
   const charsPerColor = Math.ceil(nonSpaceChars.length / colors.length);
   
   let result = '';
-  let colorIndex = 0;
   let charCount = 0;
   
   for (const char of chars) {

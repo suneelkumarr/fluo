@@ -3,10 +3,10 @@
  * Calculate visible length and manipulate strings with ANSI awareness
  */
 
-import { stripAnsi, extractAnsi } from './strip';
+import { stripAnsi } from './strip';
 
 /**
- * Visible length options
+ * Get the visible length of a string (stripping ANSI codes)
  */
 export interface VisibleOptions {
   /** Count wide characters (CJK, emoji) as 2 */
