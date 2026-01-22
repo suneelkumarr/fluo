@@ -324,7 +324,7 @@ export const pulse = (
   const { frame = 0, speed = 1, minBrightness = 30 } = options;
   
   const rgb = typeof color === 'string' ? hexToRgb(color) : color;
-  const [h, s, l] = rgbToHsl(...rgb);
+  const [h, s] = rgbToHsl(...rgb);
   
   // Calculate brightness based on frame
   const brightness = minBrightness + (Math.sin(frame * speed * 0.1) + 1) * ((100 - minBrightness) / 2);
