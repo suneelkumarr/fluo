@@ -1,0 +1,26 @@
+# Source code (types are in dist/)
+src/
+
+# Tests
+test/
+coverage/
+
+# Benchmarks
+benchmark/
+
+# Configuration
+rollup.config.js
+tsconfig.json
+.eslintrc.json
+.prettierrc
+
+# Git files
+.gitignore
+.github/
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
